@@ -1,0 +1,16 @@
+{
+    "app_name": "Sistema de Generación de Exámenes con IA",
+    "version": "1.0.0",
+    "ollama": {
+        "host": "http://localhost:11434",
+        "default_model": "llama2"
+    },
+    "templates_path": "templates",
+    "output_path": "output",
+    "rules": {
+        "max_questions": 20,
+        "default_exam_duration": 90,
+        "include_answer_key": true,
+        "language": "es"
+    }
+}
