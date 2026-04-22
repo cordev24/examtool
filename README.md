@@ -47,7 +47,9 @@ ollama pull mistral
 
 ## Uso
 
-### Opción 1: Usando el script de inicio (recomendado)
+### En Linux / macOS
+
+#### Opción 1: Usando el script de inicio (recomendado)
 
 ```bash
 ./run.sh
@@ -59,25 +61,58 @@ Este script:
 - Instala/sincroniza dependencias automáticamente
 - Inicia la aplicación
 
-### Opción 2: Manual con uv
+#### Opción 2: Manual con uv
 
 ```bash
 uv run python main.py
 ```
 
-### Opción 3: Como comando instalado
+#### Opción 3: Como comando instalado
 
 ```bash
 uv pip install -e .
 exam-generator
 ```
 
+### En Windows
+
+#### Opción 1: Usando el script batch (recomendado)
+
+Haz doble clic en `run.bat` o ejecuta desde CMD/PowerShell:
+
+```cmd
+run.bat
+```
+
+Este script:
+- Verifica que uv esté instalado (incluye instrucciones si falta)
+- Sincroniza el entorno virtual e instala dependencias
+- Inicia la aplicación
+- Muestra mensajes de error útiles
+
+#### Opción 2: Manual con uv
+
+```cmd
+uv run python main.py
+```
+
+#### Instalar uv en Windows (si no lo tienes)
+
+Ejecuta en PowerShell (como administrador):
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+O descarga el ejecutable desde: https://github.com/astral-sh/uv/releases
+
 ## Estructura del Proyecto
 
 ```
 exam-generator-ia/
 ├── main.py                 # Aplicación principal con UI moderna
-├── run.sh                  # Script de inicio rápido
+├── run.sh                  # Script de inicio (Linux/Mac)
+├── run.bat                 # Script de inicio (Windows)
 ├── pyproject.toml          # Configuración del proyecto (uv)
 ├── uv.lock                 # Lock file de dependencias
 ├── README.md               # Esta documentación

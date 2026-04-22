@@ -2,7 +2,23 @@
 
 ## Requisitos Previos
 
-### 1. Instalar Ollama
+### 1. Instalar uv (Gestor de Paquetes)
+
+**En Linux/macOS:**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+```
+
+**En Windows:**
+Ejecuta en PowerShell (como administrador):
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+O descarga el ejecutable desde: https://github.com/astral-sh/uv/releases
+
+### 2. Instalar Ollama
 
 Ollama es necesario para ejecutar los modelos de IA localmente.
 
@@ -19,7 +35,7 @@ brew install ollama
 **En Windows:**
 Descargue el instalador desde https://ollama.ai/download
 
-### 2. Descargar un Modelo
+### 3. Descargar un Modelo
 
 Después de instalar Ollama, descargue un modelo:
 
@@ -31,13 +47,13 @@ ollama pull codellama       # Especializado en código (3.8GB)
 ollama pull llama2-uncensored  # Sin restricciones de contenido
 ```
 
-### 3. Iniciar Ollama
+### 4. Iniciar Ollama
 
 ```bash
 # En segundo plano (Linux/Mac)
 ollama serve &
 
-# O dejar que el script run.sh lo inicie automáticamente
+# O dejar que el script lo inicie automáticamente
 ```
 
 ## Instalación del Sistema
@@ -48,32 +64,53 @@ ollama serve &
 cd /ruta/donde/guardar/el/proyecto
 ```
 
-### Paso 2: Instalar dependencias de Python
+### Paso 2: Instalar dependencias con uv
 
 ```bash
-pip install ollama requests ttkbootstrap python-docx PyPDF2
+uv sync
 ```
+
+Este comando crea un entorno virtual e instala todas las dependencias automáticamente.
 
 ### Paso 3: Verificar instalación
 
 ```bash
-python3 -c "import tkinter; print('✅ Tkinter OK')"
-python3 -c "import ollama; print('✅ Ollama OK')"
-python3 -c "import docx; print('✅ python-docx OK')"
+# Con uv
+uv run python -c "import tkinter; print('✅ Tkinter OK')"
+uv run python -c "import ollama; print('✅ Ollama OK')"
+uv run python -c "import docx; print('✅ python-docx OK')"
 ```
 
 ## Ejecución
 
-### Opción 1: Usar el script de inicio (recomendado)
+### En Linux / macOS
+
+#### Opción 1: Usar el script de inicio (recomendado)
 
 ```bash
 ./run.sh
 ```
 
-### Opción 2: Ejecutar directamente con Python
+#### Opción 2: Ejecutar directamente con uv
 
 ```bash
-python3 main.py
+uv run python main.py
+```
+
+### En Windows
+
+#### Opción 1: Usar el script batch (recomendado)
+
+Haz doble clic en `run.bat` o ejecuta desde CMD/PowerShell:
+
+```cmd
+run.bat
+```
+
+#### Opción 2: Ejecutar directamente con uv
+
+```cmd
+uv run python main.py
 ```
 
 ## Estructura del Proyecto
@@ -81,8 +118,12 @@ python3 main.py
 ```
 /workspace/
 ├── main.py                 # Aplicación principal (Interfaz gráfica)
-├── run.sh                  # Script de inicio rápido
+├── run.sh                  # Script de inicio (Linux/Mac)
+├── run.bat                 # Script de inicio (Windows)
+├── pyproject.toml          # Configuración del proyecto (uv)
+├── uv.lock                 # Lock file de dependencias
 ├── README.md               # Documentación general
+├── INSTALL.md              # Guía detallada de instalación
 ├── config/
 │   ├── settings.json       # Configuración general
 │   └── templates.json      # Plantillas de documentos
