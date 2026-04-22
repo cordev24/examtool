@@ -1,0 +1,38 @@
+{
+    "templates": [
+        {
+            "id": "template_001",
+            "name": "Plantilla Estándar Universidad",
+            "description": "Formato estándar para exámenes universitarios",
+            "header": {
+                "institution_name": "UNIVERSIDAD EJEMPLO",
+                "faculty": "Facultad de Ciencias",
+                "department": "Departamento de Matemáticas",
+                "logo_path": "",
+                "show_logo": false
+            },
+            "exam_info": {
+                "include_course_name": true,
+                "include_student_name": true,
+                "include_date": true,
+                "include_duration": true,
+                "include_score": true
+            },
+            "footer": {
+                "include_page_numbers": true,
+                "confidentiality_notice": "Este documento es confidencial y de uso exclusivo para fines académicos."
+            },
+            "formatting": {
+                "font_family": "Arial",
+                "font_size": 12,
+                "line_spacing": 1.5,
+                "margins": {
+                    "top": 2.54,
+                    "bottom": 2.54,
+                    "left": 2.54,
+                    "right": 2.54
+                }
+            }
+        }
+    ]
+}
